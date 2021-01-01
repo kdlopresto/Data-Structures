@@ -154,14 +154,11 @@ myLinkedList.insert(5, 99);
 myLinkedList.insert(9, 101);
 myLinkedList.insert(-1, 59);
 myLinkedList.insert(3, 57);
-myLinkedList.printList();
+console.log(myLinkedList.printList());
 myLinkedList.removeByValue(23);
 myLinkedList.removeByValue(666);
 myLinkedList.removeByIndex(0);
 myLinkedList.removeByIndex(666);
-//console.log("HERE1")
 myLinkedList.removeByIndex(2);
-myLinkedList.printList();
-//console.log("HERE2")
-console.log(myLinkedList.printListFromTail())
-//console.log(myLinkedList)
+console.log(myLinkedList.printList());
+
