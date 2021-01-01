@@ -23,7 +23,7 @@ class Node {
 class LinkedList {
   constructor(value) {
     this.head = new Node(value);
-      this.tail = this.head;
+    this.tail = this.head;
     this.length = 1;
   }
   append(value) {
@@ -61,29 +61,30 @@ class LinkedList {
     } else if (index === 0) {
       this.prepend(value);
       return this.printList();
-    } else if (index >= this.length ) {
+    } else if (index >= this.length) {
       this.append(value);
       return this.printList();
     } else {
       const newNode = new Node(value);
-      const tgtNode = this.traverseToIndex(index-1);
+      const tgtNode = this.traverseToIndex(index - 1);
       newNode.next = tgtNode.next;
       newNode.prev = tgtNode;
       tgtNode.next = newNode;
       newNode.next.prev = newNode;
       this.length++;
       return this.printList();
-    }    
+    }
   }
 
   removeByIndex(index) {
     if (index < 0 || index > this.length) {
       console.log("Invalid index value : " + index + " specified");
+      return this;
     } else if (index === 0) {
       this.head = this.head.next;
       this.head.prev = null;
     } else {
-      const ldrNode = this.traverseToIndex(index-1);
+      const ldrNode = this.traverseToIndex(index - 1);
       const unwantedNode = ldrNode.next;
       ldrNode.next = unwantedNode.next;
       ldrNode.next.prev = ldrNode;
@@ -121,13 +122,23 @@ class LinkedList {
       return this;
     }
   }
-  
+
   printList() {
     const listArray = [];
     let curNode = this.head;
     while (curNode !== null) {
       listArray.push(curNode.value);
       curNode = curNode.next;
+    }
+    return listArray;
+  }
+
+  printListFromTail() {
+    const listArray = [];
+    let curNode = this.tail;
+    while (curNode !== null) {
+      listArray.push(curNode.value);
+      curNode = curNode.prev;
     }
     return listArray;
   }
@@ -148,6 +159,9 @@ myLinkedList.removeByValue(23);
 myLinkedList.removeByValue(666);
 myLinkedList.removeByIndex(0);
 myLinkedList.removeByIndex(666);
+//console.log("HERE1")
 myLinkedList.removeByIndex(2);
 myLinkedList.printList();
+//console.log("HERE2")
+console.log(myLinkedList.printListFromTail())
 //console.log(myLinkedList)

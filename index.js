@@ -143,4 +143,5 @@ myLinkedList.removeByIndex(0);
 myLinkedList.removeByIndex(666);
 myLinkedList.removeByIndex(2);
 myLinkedList.printList();
+console.log("Keith");
 //console.log(myLinkedList)
