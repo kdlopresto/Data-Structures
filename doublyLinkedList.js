@@ -16,32 +16,32 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
 
 class LinkedList {
   constructor(value) {
-    this.head = {
-      value: value,
-      next: null
-    };
-    this.tail = this.head;
+    this.head = new Node(value);
+      this.tail = this.head;
     this.length = 1;
   }
   append(value) {
     const newNode = new Node(value);
+    newNode.prev = this.tail;
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
-    return this;
+    return this.printList();
   }
 
   prepend(value) {
     const newNode = new Node(value);
-    newNode.next = this.head
+    newNode.next = this.head;
+    this.head.prev = newNode;
     this.head = newNode;
     this.length++;
-    return this;
+    return this.printList();
   }
 
   traverseToIndex(index) {
@@ -59,16 +59,20 @@ class LinkedList {
       console.log("Invalid index value : " + index + " specified");
       return this;
     } else if (index === 0) {
-      return this.prepend(value);
+      this.prepend(value);
+      return this.printList();
     } else if (index >= this.length ) {
-      return this.append(value);
+      this.append(value);
+      return this.printList();
     } else {
       const newNode = new Node(value);
       const tgtNode = this.traverseToIndex(index-1);
       newNode.next = tgtNode.next;
+      newNode.prev = tgtNode;
       tgtNode.next = newNode;
+      newNode.next.prev = newNode;
       this.length++;
-      return this;
+      return this.printList();
     }    
   }
 
@@ -77,14 +81,15 @@ class LinkedList {
       console.log("Invalid index value : " + index + " specified");
     } else if (index === 0) {
       this.head = this.head.next;
+      this.head.prev = null;
     } else {
       const ldrNode = this.traverseToIndex(index-1);
       const unwantedNode = ldrNode.next;
       ldrNode.next = unwantedNode.next;
+      ldrNode.next.prev = ldrNode;
     }
-
     this.length--;
-    return this;
+    return this.printList();
   }
 
   removeByValue(value) {
@@ -96,14 +101,16 @@ class LinkedList {
     } else {
       while (curNode != null) {
         if (curNode.value === value) {
-          if (preNode == null) {
+          if (preNode === null) {
             this.head = curNode.next;
+            this.prev = null;
             this.length--;
-            return this;
+            return this.printList();
           } else {
             preNode.next = curNode.next;
+            curNode.next.prev = preNode;
             this.length--;
-            return this;
+            return this.printList();
           }
         } else {
           preNode = curNode;
