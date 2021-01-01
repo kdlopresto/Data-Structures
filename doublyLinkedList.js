@@ -20,7 +20,7 @@ class Node {
   }
 }
 
-class LinkedList {
+class doublyLinkedList {
   constructor(value) {
     this.head = new Node(value);
     this.tail = this.head;
@@ -32,7 +32,7 @@ class LinkedList {
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
-    return this.printList();
+    return this;
   }
 
   prepend(value) {
@@ -41,7 +41,7 @@ class LinkedList {
     this.head.prev = newNode;
     this.head = newNode;
     this.length++;
-    return this.printList();
+    return this;
   }
 
   traverseToIndex(index) {
@@ -60,10 +60,10 @@ class LinkedList {
       return this;
     } else if (index === 0) {
       this.prepend(value);
-      return this.printList();
+      return this;
     } else if (index >= this.length) {
       this.append(value);
-      return this.printList();
+      return this;
     } else {
       const newNode = new Node(value);
       const tgtNode = this.traverseToIndex(index - 1);
@@ -72,7 +72,7 @@ class LinkedList {
       tgtNode.next = newNode;
       newNode.next.prev = newNode;
       this.length++;
-      return this.printList();
+      return this;
     }
   }
 
@@ -90,7 +90,7 @@ class LinkedList {
       ldrNode.next.prev = ldrNode;
     }
     this.length--;
-    return this.printList();
+    return this;
   }
 
   removeByValue(value) {
@@ -106,12 +106,12 @@ class LinkedList {
             this.head = curNode.next;
             this.prev = null;
             this.length--;
-            return this.printList();
+            return this;
           } else {
             preNode.next = curNode.next;
             curNode.next.prev = preNode;
             this.length--;
-            return this.printList();
+            return this;
           }
         } else {
           preNode = curNode;
@@ -144,7 +144,7 @@ class LinkedList {
   }
 }
 
-let myLinkedList = new LinkedList(10);
+let myLinkedList = new doublyLinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
