@@ -115,6 +115,24 @@ class LinkedList {
     }
   }
   
+  reverse() {
+    if (this.length === 1) {
+      return this;
+    }
+    let first = this.head;
+    let second = first.next;
+    this.tail = this.head;
+    while(second) {
+      const tmpNode = second.next;
+      second.next = first;
+      first = second;
+      second = tmpNode;
+    }
+    this.head.next = null;
+    this.head = first
+    return this;
+  }
+
   printList() {
     const listArray = [];
     let curNode = this.head;
@@ -142,5 +160,7 @@ myLinkedList.removeByValue(666);
 myLinkedList.removeByIndex(0);
 myLinkedList.removeByIndex(666);
 myLinkedList.removeByIndex(2);
-myLinkedList.printList();
+console.log(myLinkedList.printList());
+myLinkedList.reverse();
+console.log(myLinkedList.printList());
 //console.log(myLinkedList)
