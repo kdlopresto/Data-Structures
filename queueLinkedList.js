@@ -27,7 +27,7 @@ class Queue {
     }
   }
   
-  enque(value){
+  enqueue(value){
     let newNode = new Node(value);
     if (this.length === 0) {
       this.tail = newNode;
@@ -60,10 +60,10 @@ class Queue {
 
 const myQueue = new Queue();
 
-myQueue.enque("matt");
-myQueue.enque("prajwal");
-myQueue.enque("dan");
-myQueue.enque("venu");
+myQueue.enqueue("matt");
+myQueue.enqueue("prajwal");
+myQueue.enqueue("dan");
+myQueue.enqueue("venu");
 console.log(myQueue.peek());
 console.log(myQueue.dequeue());
 console.log(myQueue.dequeue());
