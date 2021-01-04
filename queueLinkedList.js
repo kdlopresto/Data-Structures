@@ -62,14 +62,14 @@ const myQueue = new Queue();
 
 myQueue.enqueue("matt");
 myQueue.enqueue("prajwal");
-//myQueue.enqueue("dan");
-//myQueue.enqueue("venu");
-//console.log(myQueue.peek());
-//console.log(myQueue.dequeue());
-//console.log(myQueue.dequeue());
-//console.log(myQueue);
-//console.log(myQueue.dequeue());
-//console.log(myQueue.dequeue());
+myQueue.enqueue("dan");
+myQueue.enqueue("venu");
+console.log(myQueue.peek());
+console.log(myQueue.dequeue());
+console.log(myQueue.dequeue());
+console.log(myQueue);
+console.log(myQueue.dequeue());
+console.log(myQueue.dequeue());
 
 
 //Discord
