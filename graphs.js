@@ -7,6 +7,7 @@ class Graph {
     this.numberOfNodes++;
     if (!this.adjacentList[node]) {
       this.adjacentList[node] = [];
+      this.numberOfNodes++;
     } 
     console.log(this.adjacentList);
   } 
