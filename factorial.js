@@ -1,16 +1,14 @@
-let answer = 1;
 
 function findFactorialRecursive(number) {
-  if (number != 0) {
-    console.log(number);
-    answer = number * findFactorialRecursive(number - 1);
-  } else {
-    return answer;
+  if (number === 0) {
+    return 1;
   }
-  return answer;
+  console.log(number);
+  return number * findFactorialRecursive(number - 1);
 }
 
 function findFactorialIterative(number) {
+  let answer = 1;
   while (number > 0) {
     console.log(number);
     answer = answer * number;
