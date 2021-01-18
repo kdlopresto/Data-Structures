@@ -17,8 +17,8 @@ function findFactorialIterative(number) {
   return answer;
 }
 
-answer = 1;
+//answer = 1;
 console.log(findFactorialRecursive(6));
 
-answer = 1;
+//answer = 1;
 console.log(findFactorialIterative(7));
