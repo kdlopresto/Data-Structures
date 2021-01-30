@@ -1,0 +1,22 @@
+//If you know a solution is not far from the root of the tree:
+BFS
+start seaching nodes closest to parent
+
+//If the tree is very deep and solutions are rare: 
+BFS
+(DFS) will take too long with deep tree
+
+//If the tree is very wide:
+DFS
+(BFS) will take too much memory
+  needs to track all nodes at a level in a queue
+
+//If solutions are frequent but located deep in the tree:
+DFS
+
+//Determining whether a path exists between two nodes:
+DFS
+DFS is built for this
+
+//Finding the shortest path:
+BFS
